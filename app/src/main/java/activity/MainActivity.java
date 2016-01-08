@@ -1,5 +1,6 @@
 package activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import android.support.v4.app.Fragment;
@@ -8,6 +9,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -15,6 +17,7 @@ import android.view.MenuItem;
 import com.example.bikram.matd.R;
 
 import android.support.v4.widget.DrawerLayout;
+import android.widget.Button;
 import android.widget.Toast;
 
 
@@ -22,11 +25,16 @@ public class MainActivity extends ActionBarActivity implements FragmentDrawer.Fr
 
     private Toolbar mToolbar;
     private FragmentDrawer drawerFragment;
+    private Button student_login,teacher_login;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+        student_login= (Button) findViewById(R.id.student_but);
+        teacher_login= (Button) findViewById(R.id.teacher_but);
 
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
 
@@ -40,7 +48,15 @@ public class MainActivity extends ActionBarActivity implements FragmentDrawer.Fr
 
         displayView(0);
     }
+    public void teacher_login(View v){
 
+        Intent intent=new Intent(MainActivity.this,TeacherLogin.class);
+
+        startActivity(intent);
+
+
+
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
